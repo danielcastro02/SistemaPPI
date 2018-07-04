@@ -205,7 +205,7 @@ public class PDF {
             celula02.setHorizontalAlignment(Element.ALIGN_CENTER);
             celula02.setVerticalAlignment(Element.ALIGN_MIDDLE);
 
-            PdfPCell celula03 = new PdfPCell(new Paragraph("Salário"));
+            PdfPCell celula03 = new PdfPCell(new Paragraph("Gasto"));
             celula03.setBorderColor(BaseColor.BLACK);
             celula03.setPaddingLeft(10);
             celula03.setHorizontalAlignment(Element.ALIGN_CENTER);
