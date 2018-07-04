@@ -173,8 +173,7 @@ public class ContFuncion {
         }
         return fun;
     }
-    
-    
+    //Demonstração
     //Registra o pagamento do salario de um funcionario
     public boolean regPagto(int cod, double parseInt, String a) throws ClassNotFoundException {
         Connection con = cbm.abrirConexao();
