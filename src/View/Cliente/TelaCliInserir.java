@@ -25,6 +25,8 @@ import java.util.logging.Logger;
 public class TelaCliInserir extends Window{
     
     private static GUIScreen gui;
+    
+    //Construtor que define o titulo da janela
     public TelaCliInserir(GUIScreen gui) {
         super("Inserir");
         this.gui = gui;
@@ -40,6 +42,7 @@ public class TelaCliInserir extends Window{
         Label label01 = new Label("Inserção de Cliente ");
         addComponent(label01);
         
+        //Espaço para inserção do novo cliente
         Label lblNome = new Label("Nome:");
         TextBox txtNome = new TextBox();
         Label lblCPF = new Label("CPF:");
@@ -51,7 +54,7 @@ public class TelaCliInserir extends Window{
         addComponent(lblCPF);
         addComponent(txtCPF);
         
-
+        //Envia os dados para o metodo que insere no banco e retorna a mensagem de sucesso ou erro baseado no retorno do metodo de inserir no banco
         Button botaoSalvar = new Button("Inserir", new Action() {
             @Override
             public void doAction() {
@@ -69,6 +72,8 @@ public class TelaCliInserir extends Window{
 
         });
         addComponent(botaoSalvar);
+        
+        //fecha a janela
         Button botaoSair = new Button("Cancelar", new Action() {
             @Override
             public void doAction() {

@@ -6,7 +6,6 @@
 package View.Cliente;
 
 import Controle.ContCli;
-import Modelo.Cliente;
 import com.googlecode.lanterna.gui.Action;
 import com.googlecode.lanterna.gui.Border;
 import com.googlecode.lanterna.gui.GUIScreen;
@@ -26,6 +25,7 @@ public class TelaCliPagar extends Window {
 
     private static GUIScreen gui;
 
+    //Construtor que define o titul da tela
     public TelaCliPagar(GUIScreen gui, String s) {
         super("Registrar Pagamento");
         this.gui = gui;
@@ -33,7 +33,6 @@ public class TelaCliPagar extends Window {
     }
 
     private void init(String s) {
-        ContCli cocli = new ContCli();
 
         setBorder(new Border.Standard());
         Panel painel01 = new Panel(Panel.Orientation.HORISONTAL);
@@ -41,9 +40,11 @@ public class TelaCliPagar extends Window {
         Label label01 = new Label("Inserção de Contato  ");
         addComponent(label01);
 
+        //Local para inserir o nome de quem ira pagar
         Label lblNome = new Label("Nome:");
         TextBox txtNome = new TextBox(s);
 
+        //ComboBox na gambiarra para listar os clientes
         Button bt = new Button("Lista", new Action() {
 
             @Override

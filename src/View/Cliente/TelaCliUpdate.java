@@ -174,22 +174,19 @@ public class TelaCliUpdate extends Window {
         setBorder(new Border.Standard());
         Panel painel01 = new Panel(Panel.Orientation.VERTICAL);
         painel01.setBetweenComponentsPadding(1);
-        Table tbl = new Table(3, "Lista de Clientes");
+        Table tbl = new Table(2, "Lista de Clientes");
         tbl.setColumnPaddingSize(1);
         tbl.removeAllRows();
-        Component[] linha = new Component[3];
+        Component[] linha = new Component[2];
         linha[0] = new Label("           Pagina:"+(PrimReg+1));
         linha[1] = new Label("------");
-        linha[2] = new Label("------");
         tbl.addRow(linha);
         linha[0] = new Label("Nome                          ");
         linha[1] = new Label("CPF            ");
-        linha[2] = new Label("Selecionar");
         tbl.addRow(linha);
 
         linha[0] = new Label("-----------------------------");
         linha[1] = new Label("---------------");
-        linha[2] = new Label("----------");
         tbl.addRow(linha);
 
         int totalReg = cocli.totalReg();
@@ -205,10 +202,9 @@ public class TelaCliUpdate extends Window {
 
             int numaux = cont;
             for (int i = PrimReg * RegPag; i < numaux && i <= RegPag * (PrimReg + 1); i++) {
-                linha[0] = new Label(ArrayCli[i].getNome());
                 linha[1] = new Label(ArrayCli[i].getCpf());
                 final String x = ArrayCli[i].getNome();
-                linha[2] = new Button("Selecionar", new Action() {
+                linha[0] = new Button(x, new Action() {
                     @Override
                     public void doAction() {
                         close();
@@ -237,8 +233,7 @@ public class TelaCliUpdate extends Window {
             }
 
         });
-        linha[1] = new Label("-------------------");
-        linha[2] = new Button("Proximo", new Action() {
+        linha[1] = new Button("Proximo", new Action() {
             @Override
             public void doAction() {
                 try {
