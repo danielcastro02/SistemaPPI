@@ -1,6 +1,5 @@
 package Controle;
 
-import Modelo.Cliente;
 import Modelo.Onibus;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +10,9 @@ import java.util.List;
 public class ContOni {
 
     ConBD cbm = new ConBD();
-
+    
+    
+    //Insere um onibus recebe apenas o modelo
     public boolean insOni(String modelo) throws ClassNotFoundException {
         Connection con = cbm.abrirConexao();
         Onibus func = new Onibus(modelo);
@@ -28,6 +29,8 @@ public class ContOni {
         return false;
     }
     
+    
+    //Retorna uma lista de objetos do tipo List<Onibus> contendo todos os onibus do banco de dados
     public List<Onibus> selectOni() throws ClassNotFoundException{
         Connection con = cbm.abrirConexao();
         List lista = new ArrayList<Onibus>();
