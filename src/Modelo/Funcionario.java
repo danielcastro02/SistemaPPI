@@ -5,7 +5,7 @@ private int cod;
 private String nome;
 private String cpf;
 private double sal;
-
+//Modelo do objeto Funcioanario
     public Funcionario(String nome, String cpf, double sal) {
         this.nome = nome;
         this.cpf = cpf;

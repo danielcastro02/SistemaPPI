@@ -1,10 +1,12 @@
 package Modelo;
 
 public class Gasto {
-private int cod;
-private int codbus;
-private String desc;
-private double val;
+
+    //Modelo do objeto Gasto
+    private int cod;
+    private int codbus;
+    private String desc;
+    private double val;
 
     public int getCod() {
         return cod;

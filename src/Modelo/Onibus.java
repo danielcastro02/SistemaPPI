@@ -1,6 +1,9 @@
 package Modelo;
 
 public class Onibus {
+    
+    //Modelo do objeto onibus
+    
     private int cod;
     private String modelo;
     private double gasto;

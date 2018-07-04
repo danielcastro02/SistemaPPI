@@ -13,31 +13,38 @@ import View.Funcionario.TelaFuncionario;
 import View.Gasto.TelaGasto;
 
 public class TelaPrincipal extends Window{
-    
+    //Tela Principal do Sistema
     private static GUIScreen gui;
     
-    
+    //Construtor que define a tela e recebe a GUI
     public TelaPrincipal(GUIScreen gS) {
         super("BPM Bus Payment Manager");
         this.gui = gS;
         init();
     }
     
+    
+    //Define os componentes da tela
     private void init(){
         setBorder(new Border.Standard());
+        //Painel opcional para organização dos elementos em modo horizontal
         Panel painel01 = new Panel(Panel.Orientation.VERTICAL);
         painel01.setBetweenComponentsPadding(1);
         Label label01 = new Label("Menu de opções");
         addComponent(label01);
+        
+        //Envia para a tela do cliente
         Button botaocliente = new Button("Clientes", new Action(){
             @Override
             public void doAction(){
-                close();
+                close();//Fecha a janela para não 
                 gui.showWindow(new TelaCliente(gui));
             }
         });
         addComponent(botaocliente);
         
+        
+        //Envia para a tela de funcionarios
         Button botaoFuncionarios = new Button("Funcionarios", new Action(){
             @Override
             public void doAction(){
@@ -47,6 +54,8 @@ public class TelaPrincipal extends Window{
         });
         addComponent(botaoFuncionarios);
         
+        
+        //Envia para a tela de ônibus
         Button onibus = new Button("Ônibus", new Action(){
             @Override
             public void doAction(){

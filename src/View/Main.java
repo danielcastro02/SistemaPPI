@@ -7,7 +7,7 @@ import com.googlecode.lanterna.terminal.Terminal;
 import java.sql.SQLException;
 
 public class Main {
-
+    //Instancia da janela principal
     public static Terminal terminal;
     public static Screen screen;
     public static GUIScreen guiScreen;
@@ -19,6 +19,7 @@ public class Main {
         screen = new Screen(terminal);
         guiScreen = new GUIScreen(screen);
         screen.startScreen();
+        //Não sei como essas coisas funcionam sei que aqui manda pra onde eu sei usar
         guiScreen.showWindow(new TelaPrincipal(guiScreen));
         screen.stopScreen();
     }

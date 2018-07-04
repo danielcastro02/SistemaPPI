@@ -1,7 +1,7 @@
 package Modelo;
 
 public class Cliente {
-
+//Modelo do objeto cliente
 private int cod;
 private String nome;
 private String cpf;
