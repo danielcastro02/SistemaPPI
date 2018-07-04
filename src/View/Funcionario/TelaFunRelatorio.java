@@ -10,7 +10,7 @@ import com.googlecode.lanterna.gui.Window;
 
 /**
  *
- * @author luubi
+ * @author Daniel Castro
  */
 public class TelaFunRelatorio extends Window {
 

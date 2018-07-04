@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author luubi
+ * @author Daniel Castro
  */
 public class TelaCliPagar extends Window {
 

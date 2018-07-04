@@ -1,5 +1,10 @@
 package Modelo;
 
+/**
+ *
+ * @author Daniel Castro
+ */
+
 public class Gasto {
 
     //Modelo do objeto Gasto

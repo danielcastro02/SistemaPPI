@@ -1,5 +1,10 @@
 package Modelo;
 
+
+/**
+ *
+ * @author Daniel Castro
+ */
 public class Onibus {
     
     //Modelo do objeto onibus

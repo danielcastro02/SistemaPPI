@@ -18,7 +18,10 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-
+/**
+ *
+ * @author Daniel Castro
+ */
 //Gera os diversos relatorios do sistema
 public class PDF {
 

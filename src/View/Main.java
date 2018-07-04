@@ -6,6 +6,11 @@ import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.terminal.Terminal;
 import java.sql.SQLException;
 
+
+/**
+ *
+ * @author Daniel Castro
+ */
 public class Main {
     //Instancia da janela principal
     public static Terminal terminal;

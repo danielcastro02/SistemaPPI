@@ -7,6 +7,11 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ *
+ * @author Daniel Castro
+ */
 public class ContOni {
 
     ConBD cbm = new ConBD();

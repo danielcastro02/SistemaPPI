@@ -10,6 +10,11 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
+/**
+ *
+ * @author Daniel Castro
+ */
 public class ContFuncion {
 
     ConBD cbm = new ConBD();

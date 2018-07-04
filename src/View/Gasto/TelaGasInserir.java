@@ -24,7 +24,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author luubi
+ * @author Daniel Castro
  */
 public class TelaGasInserir extends Window {
 

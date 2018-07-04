@@ -8,6 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
+/**
+ *
+ * @author Daniel Castro
+ */
 //classe de constrole dos gastos
 public class ContGast {
 

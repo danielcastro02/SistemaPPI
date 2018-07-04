@@ -12,6 +12,11 @@ import com.googlecode.lanterna.gui.component.Panel;
 import View.Funcionario.TelaFuncionario;
 import View.Gasto.TelaGasto;
 
+
+/**
+ *
+ * @author Daniel Castro
+ */
 public class TelaPrincipal extends Window{
     //Tela Principal do Sistema
     private static GUIScreen gui;
@@ -65,6 +70,8 @@ public class TelaPrincipal extends Window{
         });
         addComponent(onibus);
         
+        
+        //Envia para a tela de gastos
         Button botaoGasto = new Button("Gastos", new Action(){
             @Override
             public void doAction(){
@@ -74,6 +81,7 @@ public class TelaPrincipal extends Window{
         });
         addComponent(botaoGasto);
         
+        //Encerra o processo do sistema
         Button botaoSair = new Button("Sair", new Action() {
             @Override
             public void doAction() {

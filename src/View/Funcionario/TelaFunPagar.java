@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author luubi
+ * @author Daniel Castro
  */
 public class TelaFunPagar extends Window {
 

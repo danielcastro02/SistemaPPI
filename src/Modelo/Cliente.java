@@ -6,7 +6,10 @@ private int cod;
 private String nome;
 private String cpf;
 private double div;
-
+/**
+ *
+ * @author Daniel Castro
+ */
     public Cliente(String nome, String cpf) {
         this.nome = nome;
         this.cpf = cpf;

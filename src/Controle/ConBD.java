@@ -4,6 +4,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+
+/**
+ *
+ * @author Daniel Castro
+ */
 public class ConBD {
 
     private Connection con;
