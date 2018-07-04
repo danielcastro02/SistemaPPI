@@ -1,4 +1,4 @@
-﻿create table onibus(
+create table onibus(
 cod serial primary key,
 modelo varchar (30),
 gasto real

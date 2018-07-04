@@ -18,6 +18,7 @@ public class ConBD {
         try {
             Class.forName("org.postgresql.Driver").newInstance();
             //Endereço do Banco, usuario e senha.
+            
             String url = "jdbc:postgresql://localhost:5433/SistemaPPI";
             String usuario = "postgres";
             String senha = "ciet";
