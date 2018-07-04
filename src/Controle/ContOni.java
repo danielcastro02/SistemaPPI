@@ -70,6 +70,8 @@ public class ContOni {
 //        return false;
 //    }
 //
+    
+    //Deleta um onibus e retorna true ou false de acordo com o resultado da operação
     public boolean delOni(int cod) {
         String sql = "delete from onibus where cod = (?)";
         try {
@@ -114,6 +116,8 @@ public class ContOni {
 //        }
 //        return false;
 //    }
+    
+    //retorna um inteiro com o total de registros na tabela onibus do banco de dados
     public int totalReg() {
         String sql = "select totalRegOni();";
         try {
