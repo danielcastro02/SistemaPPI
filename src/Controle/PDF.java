@@ -18,12 +18,20 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+
+//Gera os diversos relatorios do sistema
 public class PDF {
 
+    
+    //Gera o relatorio dos clientes 
     public void realtorioCli() throws ClassNotFoundException, FileNotFoundException, DocumentException {
         ContCli cocli = new ContCli();
+        
 
+        //Instancia um novo documento
         Document doc = new Document();
+        
+        //Define o local do documento
         PdfWriter objpdf = PdfWriter.getInstance(doc, new FileOutputStream("relatorioClientes.pdf"));
         doc.open();
         PdfPTable tb = new PdfPTable(1);
@@ -31,7 +39,7 @@ public class PDF {
         tb.setHorizontalAlignment(Element.ALIGN_CENTER);
         tb.setSpacingAfter(10f);
         tb.setSpacingBefore(10f);
-
+        
         PdfPCell cel = new PdfPCell(new Paragraph("Relatório Clientes."));
         cel.setBorderColor(BaseColor.BLACK);
         cel.setPaddingLeft(10);
@@ -135,7 +143,9 @@ public class PDF {
         PDF pd = new PDF();
         pd.abreArquivoPdf("relatorioClientes.pdf");
     }
-
+    
+    
+    //Recebe o local do arquivo e abre no visualizador de pdf padrão
     public void abreArquivoPdf(String arquivopdf) {
         if (Desktop.isDesktopSupported()) {
             try {
@@ -147,6 +157,8 @@ public class PDF {
         }
     }
     
+    
+    //Gera o relatório dos onibus
     public void realtorioOni() throws ClassNotFoundException, FileNotFoundException, DocumentException {
         ContOni cocli = new ContOni();
 
@@ -249,6 +261,8 @@ public class PDF {
         pd.abreArquivoPdf("relatorioOnibus.pdf");
     }
     
+    
+    //gera o relatório dos gastos
     public void realtorioGas() throws ClassNotFoundException, FileNotFoundException, DocumentException {
         ContGast gas = new ContGast();
 
@@ -365,7 +379,7 @@ public class PDF {
         pd.abreArquivoPdf("relatorioGastos.pdf");
     }
 
-    
+    //Gera o relatório dos funcionarios
     public void realtorioFun() throws ClassNotFoundException, FileNotFoundException, DocumentException {
         ContFuncion cofun = new ContFuncion();
 
