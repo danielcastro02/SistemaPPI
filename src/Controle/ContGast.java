@@ -14,10 +14,10 @@ public class ContGast {
     ConBD cbm = new ConBD();
 
     
-    //Insere 
-    public boolean insGast(int nome, String cpf, double sal) throws ClassNotFoundException {
+    //Insere um novo gasto recebe o codigo do onibus um a descrição e o valor
+    public boolean insGast(int codo, String desc, double val) throws ClassNotFoundException {
         Connection con = cbm.abrirConexao();
-        Gasto gas = new Gasto(nome, cpf, sal);
+        Gasto gas = new Gasto(codo, desc, val);
         String sql = "insert into gasto (codo, decr, val) values (?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -32,6 +32,8 @@ public class ContGast {
         return false;
     }
 
+    
+    //Retorna o total de registros na tabela de gastos
     public int totalReg() throws ClassNotFoundException {
         String SQL = "select count(cod) from gasto";
         Connection con = cbm.abrirConexao();
@@ -62,6 +64,8 @@ public class ContGast {
 //    }
 //
 
+    
+    //Deleta um gasto apenas para fins de correção
     public boolean delGas(int cod) throws ClassNotFoundException {
         Connection con = cbm.abrirConexao();
         String sql = "delete from gasto where cod = (?)";
@@ -165,7 +169,7 @@ public class ContGast {
 //    }
 //
 //    
-
+    //Retorna uma lista de todos os gastos na forma de uma List<>
     public List<Gasto> selecGas() throws ClassNotFoundException {
         Connection con = cbm.abrirConexao();
         List lista = new ArrayList<Gasto>();
