@@ -30,7 +30,7 @@ public class TelaGasto extends Window {
     private static GUIScreen gui;
 
     public TelaGasto(GUIScreen gS) {
-        super("Tela Principal");
+        super("BPM Bus Payment Manager");
         this.gui = gS;
         init();
     }

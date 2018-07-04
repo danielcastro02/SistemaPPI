@@ -18,7 +18,7 @@ import View.Gasto.TelaGasto;
  * @author Daniel Castro
  */
 public class TelaPrincipal extends Window{
-    //Tela Principal do Sistema
+    //BPM Bus Payment Manager do Sistema
     private static GUIScreen gui;
     
     //Construtor que define a tela e recebe a GUI
