@@ -4,16 +4,17 @@ import Modelo.Gasto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
+
+//classe de constrole dos gastos
 public class ContGast {
 
     ConBD cbm = new ConBD();
 
+    
+    //Insere 
     public boolean insGast(int nome, String cpf, double sal) throws ClassNotFoundException {
         Connection con = cbm.abrirConexao();
         Gasto gas = new Gasto(nome, cpf, sal);

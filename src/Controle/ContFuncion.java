@@ -191,6 +191,8 @@ public class ContFuncion {
         return false;
     }
 
+    
+    //Retorna um objeto do tipo funcionario selecionado do banco pelo nome
     public Funcionario selecFun(String cod) throws ClassNotFoundException {
         Connection con = cbm.abrirConexao();
         String SQL = "select * from funcionario where nome = (?) order by nome";
