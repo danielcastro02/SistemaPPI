@@ -107,7 +107,7 @@ public class ContFuncion {
     }
 */
     
-    //
+    //Seleciona todas as informações da tabela funcionario e retorna uma lista de objetos do tipo List<>
     public List<Funcionario> selectFun() throws ClassNotFoundException {
         Connection con = cbm.abrirConexao();
         List lista = new ArrayList<>();
@@ -134,6 +134,7 @@ public class ContFuncion {
         return lista;
     }
 
+    //Retorna o numero total de registros na tabela funcioanrio
     public int totalReg() throws ClassNotFoundException {
         String SQL = "select count(cod) from funcionario";
         Connection con = cbm.abrirConexao();
@@ -148,6 +149,8 @@ public class ContFuncion {
         return 0;
     }
 
+    
+    //Seleciona um funcionario pelo codigo no banco de dados
     public Funcionario selecFun(int cod) throws ClassNotFoundException {
         Connection con = cbm.abrirConexao();
         String SQL = "select * from funcionario where cod = (?) order by nome";
@@ -171,6 +174,8 @@ public class ContFuncion {
         return fun;
     }
     
+    
+    //Registra o pagamento do salario de um funcionario
     public boolean regPagto(int cod, double parseInt, String a) throws ClassNotFoundException {
         Connection con = cbm.abrirConexao();
         String sql = "insert into pagfun (codfun, valor) values (?,?)";
