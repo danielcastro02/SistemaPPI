@@ -129,6 +129,28 @@ execute procedure divdoni();
 --==============================================================================================================
 
 
+create or replace function deleta_divida()
+returns trigger as $deleta_divida$
+begin
+if(true) then
+update cliente
+set divd = divd -(old.val / 
+		  (select count(*)
+		  from cliente));
+end if;
+return new;
+end;
+$deleta_divida$ language plpgsql;
+
+create trigger deleta_divida
+before delete on gasto
+for each row
+execute procedure deleta_divida();
+
+
+--==============================================================================================================
+
+
 insert into cliente values (10, 'Trevor', '02456687608', 250);
 insert into cliente values (1, 'Yasmim', '02343354608', 250);
 insert into cliente values (2, 'Kevin', '01234456509', 250);
@@ -144,14 +166,14 @@ insert into cliente values (9, 'Julia', '02121141505', 250);
 
 insert into funcionario values (1, 'Daniel', '02355567609', 250);
 insert into funcionario values (2, 'Konrado', '02947709098', 250);
-insert into funcionario values (3, 'Fl·vio', '02134464394', 250);
+insert into funcionario values (3, 'Fl√°vio', '02134464394', 250);
 insert into funcionario values (4, 'Rafael', '01245565490', 250);
-insert into funcionario values (5, 'Jo„o', '02555478905', 250);
+insert into funcionario values (5, 'Jo√£o', '02555478905', 250);
 insert into funcionario values (6, 'Paulo', '02447899890', 250);
 insert into funcionario values (7, 'Ana Paula', '03098874320', 250);
 insert into funcionario values (8, 'Julia', '02223786544', 250);
 insert into funcionario values (9, 'Maria', '02387864408', 250);
-insert into funcionario values (10, 'MaurÌcio', '02977743387', 250);
+insert into funcionario values (10, 'Maur√≠cio', '02977743387', 250);
 
 --==============================================================================================================
 
@@ -171,12 +193,12 @@ insert into onibus values (10, 'AT-4553', 5500);
 insert into gasto values (1, 1, 'Pneu furado', 550);
 insert into gasto values (2, 2, 'Estofamento', 650);
 insert into gasto values (3, 3, 'Vidro quebrado', 540);
-insert into gasto values (4, 4, 'ManutenÁ„o', 690);
+insert into gasto values (4, 4, 'Manuten√ß√£o', 690);
 insert into gasto values (5, 5, 'Estofamento', 440);
 insert into gasto values (6, 6, 'Vidro quebrado', 400);
 insert into gasto values (7, 7, 'Pneu furado', 390);
-insert into gasto values (8, 8, 'ManutenÁ„o', 760);
-insert into gasto values (9, 9, 'ManutenÁ„o', 680);
+insert into gasto values (8, 8, 'Manuten√ß√£o', 760);
+insert into gasto values (9, 9, 'Manuten√ß√£o', 680);
 insert into gasto values (10, 10, 'Pneu furado', 510);
 
 --==============================================================================================================
