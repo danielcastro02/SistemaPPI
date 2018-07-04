@@ -99,7 +99,7 @@ public class TelaGasInserir extends Window {
             public void doAction() {
                 try {
                     if (cogas.insGast(Integer.parseInt(txtNome.getText()), txtbox.getText(), Double.parseDouble(txtSal.getText().replace(",", ".")))) {
-                        MessageBox.showMessageBox(gui, "Info", "Funcionario Inserido");
+                        MessageBox.showMessageBox(gui, "Info", "Gasto Inserido");
                     } else {
                         MessageBox.showMessageBox(gui, "Info", "ERRO!");
                     }
