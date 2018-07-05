@@ -42,11 +42,12 @@ public class TelaFunInserir extends Window{
         addComponent(label01);
         
         Label lblNome = new Label("Nome:");
-        TextBox txtNome = new TextBox();
+        TextBox txtNome = new TextBox("", 25);
         Label lblCPF = new Label("CPF:");
-        TextBox txtCPF = new TextBox();
+        TextBox txtCPF = new TextBox("", 12);
         Label lblSal = new Label("Salário");
-        TextBox txtSal = new TextBox();
+        Label rs = new Label("R$");
+        TextBox txtSal = new TextBox("R$");
         
 
         addComponent(lblNome);
@@ -54,12 +55,15 @@ public class TelaFunInserir extends Window{
         addComponent(lblCPF);
         addComponent(txtCPF);
         addComponent(lblSal);
+        //painel01.addComponent(rs);
         addComponent(txtSal);
+        //addComponent(painel01);
 
         Button botaoSalvar = new Button("Inserir", new Action() {
             @Override
             public void doAction() {
                 try {
+                    txtSal.setText(txtSal.getText().replace("R", "").replace("$", ""));
                     if(cofun.insFunc(txtNome.getText(), txtCPF.getText(), Double.parseDouble(txtSal.getText().replace(",", ".")))){
                         MessageBox.showMessageBox(gui, "Info", "Funcionario Inserido");
                     }else{

@@ -107,6 +107,8 @@ public class TelaFunUpdate extends Window {
                         try {
                             cofun.delFunc(a);
                             MessageBox.showMessageBox(gui, "Info", "Funcionario Deletado");
+                            close();
+                            gui.showWindow(new TelaFunUpdate(gui, a));
                         } catch (ClassNotFoundException ex) {
                             MessageBox.showMessageBox(gui, "Info", "Erro");
                             Logger.getLogger(TelaFunUpdate.class.getName()).log(Level.SEVERE, null, ex);

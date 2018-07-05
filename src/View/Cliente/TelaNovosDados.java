@@ -35,7 +35,7 @@ public class TelaNovosDados extends Window {
         Label label1 = new Label("Nome");
         addComponent(label1);
         Cliente cli = cocli.selecCli(cod);
-        TextBox nome = new TextBox(cli.getNome(),25);
+        TextBox nome = new TextBox(cli.getNome(), 25);
         addComponent(nome);
         Label label2 = new Label("CPF");
         addComponent(label2);

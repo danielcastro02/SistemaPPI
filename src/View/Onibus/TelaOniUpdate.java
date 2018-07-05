@@ -50,13 +50,13 @@ public class TelaOniUpdate extends Window{
         linha[3] = new Label("         ");
         tbl.addRow(linha);
         linha[0] = new Label("Codigo  ");
-        linha[1] = new Label("Modelo                       ");
+        linha[1] = new Label("Modelo            ");
         linha[2] = new Label("Gasto     ");
         linha[3] = new Label("Excluir");
         tbl.addRow(linha);
 
         linha[0] = new Label("-------");
-        linha[1] = new Label("-----------------------------");
+        linha[1] = new Label("------------------");
         linha[2] = new Label("-----------");
         linha[3] = new Label("---------");
         tbl.addRow(linha);
@@ -117,7 +117,7 @@ public class TelaOniUpdate extends Window{
             }
 
         });
-        linha[1] = new Label("-----------------------------");
+        linha[1] = new Label("------------------");
         linha[2] = new Label("-----------");
         linha[3] = new Button("Proximo", new Action() {
             @Override
