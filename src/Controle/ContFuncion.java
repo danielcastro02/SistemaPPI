@@ -20,7 +20,7 @@ public class ContFuncion {
     ConBD cbm = new ConBD();
 
     //Insere um funcionario recebendo como parametros os dados para montagem do objeto
-    public boolean insFunc(String nome, String cpf, double sal) throws ClassNotFoundException {
+    public boolean insFunc(String nome, String cpf, double sal) throws ClassNotFoundException, SQLException {
         Connection con = cbm.abrirConexao();
         Funcionario func = new Funcionario(nome, cpf, sal);
         String sql = "insert into funcionario (nome, cpf, sal) values (?,?,?)";
@@ -58,7 +58,7 @@ public class ContFuncion {
 */
     
     //Deleta um funcionario recebendo o codigo do funcionario a ser deletado e retorna true ou false de acordo com o resultado da operação
-    public boolean delFunc(int cod) throws ClassNotFoundException {
+    public boolean delFunc(int cod) throws ClassNotFoundException, SQLException {
         Connection con = cbm.abrirConexao();
         String sql = "delete from funcionario where cod = (?)";
         try {
@@ -74,7 +74,7 @@ public class ContFuncion {
 
     
     //Atualiza um funcionario, recebendo como parametro os novos dados a serem inseridos
-    public boolean updFunc(int cod, String nome, String cpf, double sal) throws ClassNotFoundException {
+    public boolean updFunc(int cod, String nome, String cpf, double sal) throws ClassNotFoundException, SQLException {
         Connection con = cbm.abrirConexao();
         Funcionario func = new Funcionario(nome, cpf, sal);
         String sql = "update funcionario set nome = (?), cpf = (?), sala = (?) where cod = (?)";
@@ -113,7 +113,7 @@ public class ContFuncion {
 */
     
     //Seleciona todas as informações da tabela funcionario e retorna uma lista de objetos do tipo List<>
-    public List<Funcionario> selectFun() throws ClassNotFoundException {
+    public List<Funcionario> selectFun() throws ClassNotFoundException, SQLException {
         Connection con = cbm.abrirConexao();
         List lista = new ArrayList<>();
         String SQL = "select * from funcionario order by nome";
@@ -140,7 +140,7 @@ public class ContFuncion {
     }
 
     //Retorna o numero total de registros na tabela funcioanrio
-    public int totalReg() throws ClassNotFoundException {
+    public int totalReg() throws ClassNotFoundException, SQLException {
         String SQL = "select count(cod) from funcionario";
         Connection con = cbm.abrirConexao();
         try {
@@ -156,7 +156,7 @@ public class ContFuncion {
 
     
     //Seleciona um funcionario pelo codigo no banco de dados
-    public Funcionario selecFun(int cod) throws ClassNotFoundException {
+    public Funcionario selecFun(int cod) throws ClassNotFoundException, SQLException {
         Connection con = cbm.abrirConexao();
         String SQL = "select * from funcionario where cod = (?) order by nome";
         ResultSet rs = null;
@@ -180,7 +180,7 @@ public class ContFuncion {
     }
     //Demonstração
     //Registra o pagamento do salario de um funcionario
-    public boolean regPagto(int cod, double parseInt, String a) throws ClassNotFoundException {
+    public boolean regPagto(int cod, double parseInt, String a) throws ClassNotFoundException, SQLException {
         Connection con = cbm.abrirConexao();
         String sql = "insert into pagfun (codfun, valor) values (?,?)";
         try{
@@ -197,7 +197,7 @@ public class ContFuncion {
 
     
     //Retorna um objeto do tipo funcionario selecionado do banco pelo nome
-    public Funcionario selecFun(String cod) throws ClassNotFoundException {
+    public Funcionario selecFun(String cod) throws ClassNotFoundException, SQLException {
         Connection con = cbm.abrirConexao();
         String SQL = "select * from funcionario where nome = (?) order by nome";
         ResultSet rs = null;

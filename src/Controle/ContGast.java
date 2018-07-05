@@ -4,6 +4,7 @@ import Modelo.Gasto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class ContGast {
 
     
     //Insere um novo gasto recebe o codigo do onibus um a descrição e o valor
-    public boolean insGast(int codo, String desc, double val) throws ClassNotFoundException {
+    public boolean insGast(int codo, String desc, double val) throws ClassNotFoundException, SQLException {
         Connection con = cbm.abrirConexao();
         Gasto gas = new Gasto(codo, desc, val);
         String sql = "insert into gasto (codo, decr, val) values (?,?,?)";
@@ -39,7 +40,7 @@ public class ContGast {
 
     
     //Retorna o total de registros na tabela de gastos
-    public int totalReg() throws ClassNotFoundException {
+    public int totalReg() throws ClassNotFoundException, SQLException {
         String SQL = "select count(cod) from gasto";
         Connection con = cbm.abrirConexao();
         try {
@@ -71,7 +72,7 @@ public class ContGast {
 
     
     //Deleta um gasto apenas para fins de correção
-    public boolean delGas(int cod) throws ClassNotFoundException {
+    public boolean delGas(int cod) throws ClassNotFoundException, SQLException {
         Connection con = cbm.abrirConexao();
         String sql = "delete from gasto where cod = (?)";
         try {
@@ -175,7 +176,7 @@ public class ContGast {
 //
 //    
     //Retorna uma lista de todos os gastos na forma de uma List<>
-    public List<Gasto> selecGas() throws ClassNotFoundException {
+    public List<Gasto> selecGas() throws ClassNotFoundException, SQLException {
         Connection con = cbm.abrirConexao();
         List lista = new ArrayList<Gasto>();
         String SQL = "select * from gasto";

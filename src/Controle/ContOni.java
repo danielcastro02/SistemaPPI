@@ -4,6 +4,7 @@ import Modelo.Onibus;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class ContOni {
     
     
     //Insere um onibus recebe apenas o modelo
-    public boolean insOni(String modelo) throws ClassNotFoundException {
+    public boolean insOni(String modelo) throws ClassNotFoundException, SQLException {
         Connection con = cbm.abrirConexao();
         Onibus func = new Onibus(modelo);
         String sql = "insert into onibus (modelo) values (?)";
@@ -36,7 +37,7 @@ public class ContOni {
     
     
     //Retorna uma lista de objetos do tipo List<Onibus> contendo todos os onibus do banco de dados
-    public List<Onibus> selectOni() throws ClassNotFoundException{
+    public List<Onibus> selectOni() throws ClassNotFoundException, SQLException{
         Connection con = cbm.abrirConexao();
         List lista = new ArrayList<Onibus>();
         String SQL = "select * from onibus";

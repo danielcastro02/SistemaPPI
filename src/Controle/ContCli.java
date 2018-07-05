@@ -44,7 +44,7 @@ public class ContCli {
     
     
 //Metodo para obter o total de registros na tabela cliente
-    public int totalReg() throws ClassNotFoundException{
+    public int totalReg() throws ClassNotFoundException, SQLException{
         String SQL = "select count(cod) from cliente";
         Connection con = cbm.abrirConexao();
         try{
@@ -59,7 +59,7 @@ public class ContCli {
     }
     
 //Metodo para inserção de novo cliente sem divida pendente    
-    public boolean insCli(String nome, String cpf) throws ClassNotFoundException {
+    public boolean insCli(String nome, String cpf) throws ClassNotFoundException, SQLException {
         Connection con = cbm.abrirConexao();
         String sql = "insert into cliente (nome, cpf) values (?,?)";
         try {
@@ -77,7 +77,7 @@ public class ContCli {
 
     
 //Método para deletar cliente apenas com codigo
-    public boolean delCli(int cod) throws ClassNotFoundException {
+    public boolean delCli(int cod) throws ClassNotFoundException, SQLException {
         Connection con = cbm.abrirConexao();
         String sql = "delete from cliente where cod = (?)";
         try {
@@ -92,7 +92,7 @@ public class ContCli {
 
     
 //Método para atualizar um cliente recebendo todos os novos dados como parametros para montagem do objeto e atualização
-    public boolean updCli(int cod, String nome, String cpf, double sal) throws ClassNotFoundException {
+    public boolean updCli(int cod, String nome, String cpf, double sal) throws ClassNotFoundException, SQLException {
         Connection con = cbm.abrirConexao();
         Cliente func = new Cliente(cod, nome, cpf, sal);
         String sql = "update cliente set nome = (?), cpf = (?), divd = (?) where cod = (?)";
@@ -111,7 +111,7 @@ public class ContCli {
         return false;
     }
 //Método para atualização de cliente recebendo o objeto montado para atualização
-    public boolean updCli(Cliente func) throws ClassNotFoundException {
+    public boolean updCli(Cliente func) throws ClassNotFoundException, SQLException {
         Connection con = cbm.abrirConexao();
         String sql = "update cliente set nome = (?), cpf = (?), divd = (?) where cod = (?)";
         try {
@@ -132,7 +132,7 @@ public class ContCli {
     
 //Método para seleção de todas as informações da tabela cliente selecionadas por nome e em ordem alfabetica
     
-    public Cliente selecCli(String s) throws ClassNotFoundException {
+    public Cliente selecCli(String s) throws ClassNotFoundException, SQLException {
         Connection con = cbm.abrirConexao();
         String SQL = "select * from cliente where nome like (?) order by nome";
         ResultSet rs = null;
@@ -156,7 +156,7 @@ public class ContCli {
     }
 
 //Método para seleção da tabela cliente por codigo ordsenado por ordem alfabetica
-    public Cliente selecCli(int s) throws ClassNotFoundException {
+    public Cliente selecCli(int s) throws ClassNotFoundException, SQLException {
         Connection con = cbm.abrirConexao();
         String SQL = "select * from cliente where cod =(?) order by nome";
         ResultSet rs = null;
@@ -184,7 +184,7 @@ public class ContCli {
     }
 
 //Médodo de seleção de toda a tabela cliente, retorna uma Lista de objetosdo tipo List<>    
-    public List<Cliente> selecCli() throws ClassNotFoundException {
+    public List<Cliente> selecCli() throws ClassNotFoundException, SQLException {
         Connection con = cbm.abrirConexao();
         List lista = new ArrayList<Cliente>();
         String SQL = "select * from cliente order by nome";
@@ -212,7 +212,7 @@ public class ContCli {
 
     
 //Registra o pagamento de um cliente, recebe o codigo do cliente que realiza o pagamento e o valor a ser pago
-    public void regPagto(int cod, double parseInt) throws ClassNotFoundException {
+    public void regPagto(int cod, double parseInt) throws ClassNotFoundException, SQLException {
         Connection con = cbm.abrirConexao();
         String sql = "update cliente set divd = divd-(?) where cod = (?)";
         try{
