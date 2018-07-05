@@ -17,6 +17,7 @@ import com.googlecode.lanterna.gui.component.Label;
 import com.googlecode.lanterna.gui.component.Panel;
 import com.googlecode.lanterna.gui.component.Table;
 import com.googlecode.lanterna.gui.dialog.MessageBox;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,13 +29,13 @@ public class TelaOniUpdate extends Window{
     
     GUIScreen gui;
     
-    public TelaOniUpdate(GUIScreen gui, int aux) throws ClassNotFoundException {
+    public TelaOniUpdate(GUIScreen gui, int aux) throws ClassNotFoundException, SQLException {
         super("Relação Geral");
         this.gui = gui;
         init(aux);
     }
 
-    public void init(int PrimReg) throws ClassNotFoundException {
+    public void init(int PrimReg) throws ClassNotFoundException, SQLException {
         ContOni coni = new ContOni();
         setBorder(new Border.Standard());
         Panel painel01 = new Panel(Panel.Orientation.VERTICAL);
@@ -87,6 +88,8 @@ public class TelaOniUpdate extends Window{
                             gui.showWindow(new TelaOniUpdate(gui, PrimReg));
                         } catch (ClassNotFoundException ex) {
                             Logger.getLogger(TelaOniUpdate.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (SQLException ex) {
+                            Logger.getLogger(TelaOniUpdate.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     }
 
@@ -108,6 +111,8 @@ public class TelaOniUpdate extends Window{
                     }
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(TelaOniUpdate.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(TelaOniUpdate.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
 
@@ -121,6 +126,8 @@ public class TelaOniUpdate extends Window{
                     close();
                     gui.showWindow(new TelaOniUpdate(gui, (PrimReg + 1)));
                 } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(TelaOniUpdate.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
                     Logger.getLogger(TelaOniUpdate.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }

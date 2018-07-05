@@ -18,6 +18,7 @@ import com.googlecode.lanterna.gui.component.Panel;
 import com.googlecode.lanterna.gui.dialog.MessageBox;
 import com.itextpdf.text.DocumentException;
 import java.io.FileNotFoundException;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -65,6 +66,8 @@ public class TelaGasto extends Window {
                     gui.showWindow(new TelaGasUpdate(gui, 0));
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(TelaGasto.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(TelaGasto.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
 
@@ -93,6 +96,8 @@ public class TelaGasto extends Window {
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(TelaGasto.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (DocumentException ex) {
+                    Logger.getLogger(TelaGasto.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
                     Logger.getLogger(TelaGasto.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 

@@ -18,6 +18,7 @@ import com.googlecode.lanterna.gui.component.Label;
 import com.googlecode.lanterna.gui.component.Panel;
 import com.googlecode.lanterna.gui.component.Table;
 import com.googlecode.lanterna.gui.dialog.MessageBox;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,13 +30,13 @@ public class TelaGasUpdate extends Window {
 
     private static GUIScreen gui;
 
-    public TelaGasUpdate(GUIScreen gui, int aux) throws ClassNotFoundException {
+    public TelaGasUpdate(GUIScreen gui, int aux) throws ClassNotFoundException, SQLException {
         super("Update");
         this.gui = gui;
         init(aux);
     }
 
-    public void init(int PrimReg) throws ClassNotFoundException {
+    public void init(int PrimReg) throws ClassNotFoundException, SQLException {
         ContGast cogas = new ContGast();
         setBorder(new Border.Standard());
         Panel painel01 = new Panel(Panel.Orientation.VERTICAL);
@@ -93,6 +94,8 @@ public class TelaGasUpdate extends Window {
                             gui.showWindow(new TelaGasUpdate(gui, PrimReg));
                         } catch (ClassNotFoundException ex) {
                             Logger.getLogger(TelaGasUpdate.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (SQLException ex) {
+                            Logger.getLogger(TelaGasUpdate.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     }
 
@@ -114,6 +117,8 @@ public class TelaGasUpdate extends Window {
                     }
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(TelaGasUpdate.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(TelaGasUpdate.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
 
@@ -128,6 +133,8 @@ public class TelaGasUpdate extends Window {
                     close();
                     gui.showWindow(new TelaGasUpdate(gui, (PrimReg + 1)));
                 } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(TelaGasUpdate.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
                     Logger.getLogger(TelaGasUpdate.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }

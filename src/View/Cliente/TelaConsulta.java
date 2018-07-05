@@ -18,6 +18,7 @@ import com.googlecode.lanterna.gui.component.Panel;
 import com.googlecode.lanterna.gui.component.Table;
 import com.googlecode.lanterna.gui.component.TextBox;
 import com.googlecode.lanterna.gui.dialog.MessageBox;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -30,35 +31,35 @@ public class TelaConsulta extends Window {
     private static GUIScreen gui;
     private int aux;
 
-    public TelaConsulta(GUIScreen gui, int i, int a) throws ClassNotFoundException {
-        super("Lista de Contatos");
+    public TelaConsulta(GUIScreen gui, int i, int a) throws ClassNotFoundException, SQLException {
+        super("Lista de Clientes");
         this.gui = gui;
         init(i, a);
 
     }
 
-    public TelaConsulta(GUIScreen gui, String i, int a) throws ClassNotFoundException {
-        super("Lista de Contatos");
+    public TelaConsulta(GUIScreen gui, String i, int a) throws ClassNotFoundException, SQLException {
+        super("Lista de Clientes");
         this.gui = gui;
         init(i, a);
     }
 
-    public TelaConsulta(GUIScreen gui, String i, String a) throws ClassNotFoundException {
-        super("Lista de Contatos");
+    public TelaConsulta(GUIScreen gui, String i, String a) throws ClassNotFoundException, SQLException {
+        super("Lista de Clientes");
         this.gui = gui;
         init(i, a);
     }
 
-    private void init(String z, int PrimReg) throws ClassNotFoundException {
+    private void init(String z, int PrimReg) throws ClassNotFoundException, SQLException {
         ContCli cocli = new ContCli();
         setBorder(new Border.Standard());
         Panel painel01 = new Panel(Panel.Orientation.VERTICAL);
         painel01.setBetweenComponentsPadding(1);
-        Table tbl = new Table(6, "Lista de Clientes");
+        Table tbl = new Table(6, "");
         tbl.setColumnPaddingSize(1);
         tbl.removeAllRows();
         Component[] linha = new Component[6];
-        linha[0] = new Label("Codigo  ");
+        linha[0] = new Label("Codigo");
         linha[1] = new Label("Nome                          ");
         linha[2] = new Label("CPF            ");
         linha[3] = new Label("Divida     ");
@@ -66,12 +67,12 @@ public class TelaConsulta extends Window {
         linha[5] = new Label("Excluir");
         tbl.addRow(linha);
 
-        linha[0] = new Label("-------");
+        linha[0] = new Label("------");
         linha[1] = new Label("-----------------------------");
         linha[2] = new Label("---------------");
         linha[3] = new Label("-----------");
         linha[4] = new Label("-----------");
-        linha[5] = new Label("---------");
+        linha[5] = new Label("-----------");
         tbl.addRow(linha);
 
 
@@ -94,6 +95,8 @@ public class TelaConsulta extends Window {
                         gui.showWindow(new TelaCliUpdate(gui, PrimReg));
                     } catch (ClassNotFoundException ex) {
                         Logger.getLogger(TelaCliUpdate.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(TelaConsulta.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     close();
                 }
@@ -109,6 +112,8 @@ public class TelaConsulta extends Window {
                         gui.showWindow(new TelaCliUpdate(gui, PrimReg));
                     } catch (ClassNotFoundException ex) {
                         Logger.getLogger(TelaCliUpdate.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(TelaConsulta.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
 
@@ -129,12 +134,21 @@ public class TelaConsulta extends Window {
         addComponent(sair);
     }
 
-    private void init(String z, String PrimReg) throws ClassNotFoundException {
+    private void init(String z, String PrimReg) throws ClassNotFoundException, SQLException {
         ContCli cocli = new ContCli();
+        Button sair = new Button("Sair", new Action() {
+            @Override
+            public void doAction() {
+                close();
+            }
+
+        });
         setBorder(new Border.Standard());
-        Panel painel01 = new Panel(Panel.Orientation.VERTICAL);
+        Panel painel01 = new Panel(Panel.Orientation.HORISONTAL);
         painel01.setBetweenComponentsPadding(1);
-        Table tbl = new Table(5, "Lista de Clientes");
+        Panel painel02 = new Panel(Panel.Orientation.HORISONTAL);
+        painel02.setBetweenComponentsPadding(1);
+        Table tbl = new Table(5, "");
         tbl.setColumnPaddingSize(1);
         tbl.removeAllRows();
         Component[] linha = new Component[5];
@@ -148,7 +162,7 @@ public class TelaConsulta extends Window {
 
         linha[0] = new Label("-------");
         linha[1] = new Label("-----------------------------");
-        linha[2] = new Label("---------------");
+        linha[2] = new Label("-----------");
         linha[3] = new Label("-----------");
         linha[4] = new Label("-----------");
 
@@ -169,23 +183,47 @@ public class TelaConsulta extends Window {
             linha[4] = new Button("RegPag", new Action() {
                 @Override
                 public void doAction() {
+                    removeComponent(sair);
                     Label valor = new Label("Valor");
                     addComponent(valor);
+                    Label rs = new Label("RS");
                     TextBox txtValor = new TextBox();
-                    addComponent(txtValor);
+                    painel01.addComponent(rs);
+                    painel01.addComponent(txtValor);
+                    addComponent(painel01);
                     Button seila = new Button("Confirmar", new Action() {
                         @Override
                         public void doAction() {
                             ContCli cocli = new ContCli();
                             try {
                                 cocli.regPagto(cli.getCod(), Double.parseDouble(txtValor.getText().replace(",", ".")));
+                                MessageBox.showMessageBox(gui, "Info", "Pagamento registrado!");
                             } catch (ClassNotFoundException ex) {
                                 Logger.getLogger(TelaConsulta.class.getName()).log(Level.SEVERE, null, ex);
+                                MessageBox.showMessageBox(gui, "Info", "ERRO!");
+                            } catch (SQLException ex) {
+                                Logger.getLogger(TelaConsulta.class.getName()).log(Level.SEVERE, null, ex);
+                                MessageBox.showMessageBox(gui, "Info", "ERRO!");
                             }
                             close();
                         }
                     });
-                    addComponent(seila);
+                    Button cancelar = new Button("Cancelar", new Action() {
+                        @Override
+                        public void doAction() {
+                            close();
+                            try {
+                                gui.showWindow(new TelaConsulta(gui, z, PrimReg));
+                            } catch (ClassNotFoundException ex) {
+                                Logger.getLogger(TelaConsulta.class.getName()).log(Level.SEVERE, null, ex);
+                            } catch (SQLException ex) {
+                                Logger.getLogger(TelaConsulta.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        }
+                    });
+                    painel02.addComponent(seila);
+                    painel02.addComponent(cancelar);
+                    addComponent(painel02);
                 }
 
             });
@@ -196,26 +234,20 @@ public class TelaConsulta extends Window {
         }
         addComponent(tbl);
 
-        Button sair = new Button("Sair", new Action() {
-            @Override
-            public void doAction() {
-                close();
-            }
-
-        });
+        
         addComponent(sair);
     }
 
-    private void init(int z, int PrimReg) throws ClassNotFoundException {
+    private void init(int z, int PrimReg) throws ClassNotFoundException, SQLException {
         ContCli cocli = new ContCli();
         setBorder(new Border.Standard());
         Panel painel01 = new Panel(Panel.Orientation.VERTICAL);
         painel01.setBetweenComponentsPadding(1);
-        Table tbl = new Table(6, "Lista de Clientes");
+        Table tbl = new Table(6, "");
         tbl.setColumnPaddingSize(1);
         tbl.removeAllRows();
         Component[] linha = new Component[6];
-        linha[0] = new Label("Codigo  ");
+        linha[0] = new Label("Codigo");
         linha[1] = new Label("Nome                          ");
         linha[2] = new Label("CPF            ");
         linha[3] = new Label("Divida     ");
@@ -223,12 +255,12 @@ public class TelaConsulta extends Window {
         linha[5] = new Label("Excluir");
         tbl.addRow(linha);
 
-        linha[0] = new Label("-------");
+        linha[0] = new Label("------");
         linha[1] = new Label("-----------------------------");
-        linha[2] = new Label("---------------");
+        linha[2] = new Label("-----------");
         linha[3] = new Label("-----------");
         linha[4] = new Label("-----------");
-        linha[5] = new Label("---------");
+        linha[5] = new Label("-----------");
         tbl.addRow(linha);
 
         try {
@@ -252,6 +284,8 @@ public class TelaConsulta extends Window {
                         
                     } catch (ClassNotFoundException ex) {
                         Logger.getLogger(TelaCliUpdate.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(TelaConsulta.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     close();
                 }
@@ -267,6 +301,8 @@ public class TelaConsulta extends Window {
                         gui.showWindow(new TelaConsulta(gui, z,0));
                     } catch (ClassNotFoundException ex) {
                         Logger.getLogger(TelaCliUpdate.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(TelaConsulta.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
 

@@ -15,6 +15,7 @@ import com.googlecode.lanterna.gui.component.Label;
 import com.googlecode.lanterna.gui.component.Panel;
 import com.googlecode.lanterna.gui.component.TextBox;
 import com.googlecode.lanterna.gui.dialog.MessageBox;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -44,9 +45,9 @@ public class TelaCliInserir extends Window{
         
         //Espaço para inserção do novo cliente
         Label lblNome = new Label("Nome:");
-        TextBox txtNome = new TextBox();
+        TextBox txtNome = new TextBox("", 25);
         Label lblCPF = new Label("CPF:");
-        TextBox txtCPF = new TextBox();
+        TextBox txtCPF = new TextBox("", 12);
         
 
         addComponent(lblNome);
@@ -65,6 +66,8 @@ public class TelaCliInserir extends Window{
                         MessageBox.showMessageBox(gui, "Info", "ERRO!");
                     }
                 } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(TelaCliInserir.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
                     Logger.getLogger(TelaCliInserir.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 close();

@@ -17,6 +17,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.sql.SQLException;
 
 /**
  *
@@ -27,7 +28,7 @@ public class PDF {
 
     
     //Gera o relatorio dos clientes 
-    public void realtorioCli() throws ClassNotFoundException, FileNotFoundException, DocumentException {
+    public void realtorioCli() throws ClassNotFoundException, FileNotFoundException, DocumentException, SQLException {
         ContCli cocli = new ContCli();
         
 
@@ -162,7 +163,7 @@ public class PDF {
     
     
     //Gera o relatório dos onibus
-    public void realtorioOni() throws ClassNotFoundException, FileNotFoundException, DocumentException {
+    public void realtorioOni() throws ClassNotFoundException, FileNotFoundException, DocumentException, SQLException {
         ContOni cocli = new ContOni();
 
         Document doc = new Document();
@@ -266,7 +267,7 @@ public class PDF {
     
     
     //gera o relatório dos gastos
-    public void realtorioGas() throws ClassNotFoundException, FileNotFoundException, DocumentException {
+    public void realtorioGas() throws ClassNotFoundException, FileNotFoundException, DocumentException, SQLException {
         ContGast gas = new ContGast();
 
         Document doc = new Document();
@@ -383,7 +384,7 @@ public class PDF {
     }
 
     //Gera o relatório dos funcionarios
-    public void realtorioFun() throws ClassNotFoundException, FileNotFoundException, DocumentException {
+    public void realtorioFun() throws ClassNotFoundException, FileNotFoundException, DocumentException, SQLException {
         ContFuncion cofun = new ContFuncion();
 
         Document doc = new Document();

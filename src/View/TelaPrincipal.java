@@ -11,6 +11,9 @@ import com.googlecode.lanterna.gui.component.Label;
 import com.googlecode.lanterna.gui.component.Panel;
 import View.Funcionario.TelaFuncionario;
 import View.Gasto.TelaGasto;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -25,12 +28,18 @@ public class TelaPrincipal extends Window{
     public TelaPrincipal(GUIScreen gS) {
         super("BPM Bus Payment Manager");
         this.gui = gS;
-        init();
+        try {
+            init();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     
     //Define os componentes da tela
-    private void init(){
+    private void init() throws ClassNotFoundException, SQLException{
         setBorder(new Border.Standard());
         //Painel opcional para organização dos elementos em modo horizontal
         Panel painel01 = new Panel(Panel.Orientation.VERTICAL);

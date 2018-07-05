@@ -17,6 +17,7 @@ import com.googlecode.lanterna.gui.component.Label;
 import com.googlecode.lanterna.gui.component.Panel;
 import com.googlecode.lanterna.gui.component.Table;
 import com.googlecode.lanterna.gui.dialog.MessageBox;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,13 +29,13 @@ public class TelaFunUpdate extends Window {
 
     private static GUIScreen gui;
 
-    public TelaFunUpdate(GUIScreen gui, int aux) throws ClassNotFoundException {
+    public TelaFunUpdate(GUIScreen gui, int aux) throws ClassNotFoundException, SQLException {
         super("Update");
         this.gui = gui;
         init(aux);
     }
 
-    public void init(int PrimReg) throws ClassNotFoundException {
+    public void init(int PrimReg) throws ClassNotFoundException, SQLException {
         ContFuncion cofun = new ContFuncion();
         setBorder(new Border.Standard());
         Panel painel01 = new Panel(Panel.Orientation.VERTICAL);
@@ -93,6 +94,8 @@ public class TelaFunUpdate extends Window {
                             gui.showWindow(new TelaNovosDados(gui, a));
                         } catch (ClassNotFoundException ex) {
                             Logger.getLogger(TelaFunUpdate.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (SQLException ex) {
+                            Logger.getLogger(TelaFunUpdate.class.getName()).log(Level.SEVERE, null, ex);
                         }
                         close();
                     }
@@ -106,6 +109,8 @@ public class TelaFunUpdate extends Window {
                             MessageBox.showMessageBox(gui, "Info", "Funcionario Deletado");
                         } catch (ClassNotFoundException ex) {
                             MessageBox.showMessageBox(gui, "Info", "Erro");
+                            Logger.getLogger(TelaFunUpdate.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (SQLException ex) {
                             Logger.getLogger(TelaFunUpdate.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     }
@@ -128,6 +133,8 @@ public class TelaFunUpdate extends Window {
                     }
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(TelaFunUpdate.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(TelaFunUpdate.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
 
@@ -143,6 +150,8 @@ public class TelaFunUpdate extends Window {
                     close();
                     gui.showWindow(new TelaFunUpdate(gui, (PrimReg + 1)));
                 } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(TelaFunUpdate.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
                     Logger.getLogger(TelaFunUpdate.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }

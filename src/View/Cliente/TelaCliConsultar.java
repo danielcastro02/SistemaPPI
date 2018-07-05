@@ -8,6 +8,7 @@ import com.googlecode.lanterna.gui.component.Button;
 import com.googlecode.lanterna.gui.component.Label;
 import com.googlecode.lanterna.gui.component.Panel;
 import com.googlecode.lanterna.gui.component.TextBox;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -55,7 +56,7 @@ public class TelaCliConsultar extends Window {
         Button codigo = new Button("Codigo", new Action() {
             @Override
             public void doAction() {
-                removeComponent(botaoSair); //Remove o botão sair para inserir a caixa de texto e o botão de pesquisa
+                removeAllComponents(); //Remove os elementos da tela para colocar os elementos da pesquisa
                 Label label02 = new Label("Insira o Codigo");
                 addComponent(label02);
                 TextBox txt1 = new TextBox();
@@ -68,6 +69,8 @@ public class TelaCliConsultar extends Window {
                         try {
                             gui.showWindow(new TelaConsulta(gui, Integer.parseInt(txt1.getText()), 0)); //chamada da tabela de pesquisa
                         } catch (ClassNotFoundException ex) {
+                            Logger.getLogger(TelaCliConsultar.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (SQLException ex) {
                             Logger.getLogger(TelaCliConsultar.class.getName()).log(Level.SEVERE, null, ex);
                         }
                         close();
@@ -85,7 +88,7 @@ public class TelaCliConsultar extends Window {
         Button nome = new Button("Nome", new Action() {
             @Override
             public void doAction() {
-                removeComponent(botaoSair);
+                removeAllComponents();
                 Label label02 = new Label("Insira o Nome");
                 addComponent(label02);
                 TextBox txt1 = new TextBox();
@@ -96,6 +99,8 @@ public class TelaCliConsultar extends Window {
                         try {
                             gui.showWindow(new TelaConsulta(gui, txt1.getText(), 0));
                         } catch (ClassNotFoundException ex) {
+                            Logger.getLogger(TelaCliConsultar.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (SQLException ex) {
                             Logger.getLogger(TelaCliConsultar.class.getName()).log(Level.SEVERE, null, ex);
                         }
                         close();

@@ -5,7 +5,6 @@
  */
 package View.Cliente;
 
-import Controle.ContCli;
 import com.googlecode.lanterna.gui.Action;
 import com.googlecode.lanterna.gui.Border;
 import com.googlecode.lanterna.gui.GUIScreen;
@@ -14,6 +13,7 @@ import com.googlecode.lanterna.gui.component.Button;
 import com.googlecode.lanterna.gui.component.Label;
 import com.googlecode.lanterna.gui.component.Panel;
 import com.googlecode.lanterna.gui.component.TextBox;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -54,6 +54,8 @@ public class TelaCliPagar extends Window {
                     gui.showWindow(new TelaCliUpdate(gui, 0 , ""));
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(TelaCliPagar.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(TelaCliPagar.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
 
@@ -70,6 +72,8 @@ public class TelaCliPagar extends Window {
                 try {
                     gui.showWindow(new TelaConsulta(gui, txtNome.getText(), "Ola"));
                 } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(TelaCliPagar.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
                     Logger.getLogger(TelaCliPagar.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 close();

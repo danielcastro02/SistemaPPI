@@ -16,6 +16,7 @@ import com.googlecode.lanterna.gui.component.Button;
 import com.googlecode.lanterna.gui.component.Label;
 import com.googlecode.lanterna.gui.component.Panel;
 import com.googlecode.lanterna.gui.component.TextBox;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -74,6 +75,8 @@ public class TelaFunPagar extends Window {
                     addComponent(b);
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(TelaFunPagar.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(TelaFunPagar.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
 
@@ -91,6 +94,8 @@ public class TelaFunPagar extends Window {
                 try {
                     gui.showWindow(new TelaConsulta(gui, txtNome.getText(), "Ola"));
                 } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(TelaFunPagar.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
                     Logger.getLogger(TelaFunPagar.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 close();

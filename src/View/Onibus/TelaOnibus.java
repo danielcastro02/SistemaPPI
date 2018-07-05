@@ -16,6 +16,7 @@ import com.googlecode.lanterna.gui.component.Button;
 import com.googlecode.lanterna.gui.component.Panel;
 import com.itextpdf.text.DocumentException;
 import java.io.FileNotFoundException;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -56,6 +57,8 @@ public class TelaOnibus extends Window {
                     gui.showWindow(new TelaOniUpdate(gui, 0));
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(TelaCliente.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(TelaOnibus.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
             
@@ -73,6 +76,8 @@ public class TelaOnibus extends Window {
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(TelaOnibus.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (DocumentException ex) {
+                    Logger.getLogger(TelaOnibus.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
                     Logger.getLogger(TelaOnibus.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }

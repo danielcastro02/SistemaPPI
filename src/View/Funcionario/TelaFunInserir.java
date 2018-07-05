@@ -15,6 +15,7 @@ import com.googlecode.lanterna.gui.component.Label;
 import com.googlecode.lanterna.gui.component.Panel;
 import com.googlecode.lanterna.gui.component.TextBox;
 import com.googlecode.lanterna.gui.dialog.MessageBox;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -65,6 +66,8 @@ public class TelaFunInserir extends Window{
                         MessageBox.showMessageBox(gui, "Info", "ERRO!");
                     }
                 } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(TelaFunInserir.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
                     Logger.getLogger(TelaFunInserir.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 close();

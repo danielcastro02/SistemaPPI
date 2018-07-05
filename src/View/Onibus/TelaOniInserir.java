@@ -14,6 +14,7 @@ import com.googlecode.lanterna.gui.component.Button;
 import com.googlecode.lanterna.gui.component.Label;
 import com.googlecode.lanterna.gui.component.TextBox;
 import com.googlecode.lanterna.gui.dialog.MessageBox;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -50,6 +51,8 @@ class TelaOniInserir extends Window {
                     }
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(TelaCliInserir.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(TelaOniInserir.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 close();
             }

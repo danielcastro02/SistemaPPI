@@ -1,7 +1,7 @@
-create table onibus(
+﻿create table onibus(
 cod serial primary key,
 modelo varchar (30),
-gasto real
+gasto numeric (15,2)
 );
 
 
@@ -13,7 +13,7 @@ create table gasto(
 cod serial primary key,
 codo int,
 decr varchar (200),
-val real,
+val numeric (15,2),
 foreign key (codo) references onibus (cod));
 
 
@@ -25,7 +25,7 @@ create table cliente (
 cod serial primary key,
 nome varchar (30),
 cpf varchar (11),
-divd real);
+divd numeric (15,2));
 
 
 --==============================================================================================================
@@ -35,7 +35,7 @@ create table funcionario (
 cod serial primary key,
 nome varchar (30),
 cpf varchar (11),
-sal real);
+sal numeric (15,2));
 
 
 --==============================================================================================================
@@ -44,7 +44,7 @@ sal real);
 create table pagfun(
 cod serial primary key,
 codfun int,
-valor real,
+valor numeric (15,2),
 foreign key (codfun) references funcionario (cod));
 
 

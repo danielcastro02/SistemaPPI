@@ -17,7 +17,7 @@ import com.googlecode.lanterna.gui.component.Label;
 import com.googlecode.lanterna.gui.component.Panel;
 import com.googlecode.lanterna.gui.component.Table;
 import com.googlecode.lanterna.gui.dialog.MessageBox;
-import static com.googlecode.lanterna.gui.dialog.MessageBox.showMessageBox;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -30,26 +30,26 @@ public class TelaConsulta extends Window {
     private static GUIScreen gui;
     private int aux;
 
-    public TelaConsulta(GUIScreen gui, int i, int a) throws ClassNotFoundException {
+    public TelaConsulta(GUIScreen gui, int i, int a) throws ClassNotFoundException, SQLException {
         super("Lista de Contatos");
         this.gui = gui;
         init(i, a);
 
     }
 
-    public TelaConsulta(GUIScreen gui, String i, int a) throws ClassNotFoundException {
+    public TelaConsulta(GUIScreen gui, String i, int a) throws ClassNotFoundException, SQLException {
         super("Lista de Contatos");
         this.gui = gui;
         init(i, a);
     }
 
-    public TelaConsulta(GUIScreen gui, String i, String a) throws ClassNotFoundException {
+    public TelaConsulta(GUIScreen gui, String i, String a) throws ClassNotFoundException, SQLException {
         super("Lista de Contatos");
         this.gui = gui;
         init(i, a);
     }
 
-    private void init(String z, int PrimReg) throws ClassNotFoundException {
+    private void init(String z, int PrimReg) throws ClassNotFoundException, SQLException {
         ContFuncion cofun = new ContFuncion();
         setBorder(new Border.Standard());
         Panel painel01 = new Panel(Panel.Orientation.VERTICAL);
@@ -94,6 +94,8 @@ public class TelaConsulta extends Window {
                         gui.showWindow(new TelaNovosDados(gui, a));
                     } catch (ClassNotFoundException ex) {
                         Logger.getLogger(TelaFunUpdate.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(TelaConsulta.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     close();
                 }
@@ -106,6 +108,8 @@ public class TelaConsulta extends Window {
                         cofun.delFunc(a);
                     } catch (ClassNotFoundException ex) {
                         Logger.getLogger(TelaFunUpdate.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(TelaConsulta.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
 
@@ -126,7 +130,7 @@ public class TelaConsulta extends Window {
         addComponent(sair);
     }
 
-    private void init(String z, String PrimReg) throws ClassNotFoundException {
+    private void init(String z, String PrimReg) throws ClassNotFoundException, SQLException {
         ContFuncion cocli = new ContFuncion();
         setBorder(new Border.Standard());
         Panel painel01 = new Panel(Panel.Orientation.VERTICAL);
@@ -173,6 +177,8 @@ public class TelaConsulta extends Window {
                         }
                     } catch (ClassNotFoundException ex) {
                         Logger.getLogger(TelaConsulta.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(TelaConsulta.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     close();
                 }
@@ -195,7 +201,7 @@ public class TelaConsulta extends Window {
         addComponent(sair);
     }
 
-    private void init(int z, int PrimReg) throws ClassNotFoundException {
+    private void init(int z, int PrimReg) throws ClassNotFoundException, SQLException {
         ContFuncion cocli = new ContFuncion();
         setBorder(new Border.Standard());
         Panel painel01 = new Panel(Panel.Orientation.VERTICAL);
@@ -238,6 +244,8 @@ public class TelaConsulta extends Window {
                     } catch (ClassNotFoundException ex) {
                         Logger.getLogger(TelaFunUpdate.class
                                 .getName()).log(Level.SEVERE, null, ex);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(TelaConsulta.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     close();
                 }
@@ -252,6 +260,8 @@ public class TelaConsulta extends Window {
                     } catch (ClassNotFoundException ex) {
                         Logger.getLogger(TelaFunUpdate.class
                                 .getName()).log(Level.SEVERE, null, ex);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(TelaConsulta.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
 
