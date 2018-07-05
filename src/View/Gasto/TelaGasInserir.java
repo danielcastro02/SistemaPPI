@@ -5,7 +5,6 @@ package View.Gasto;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import Controle.ContFuncion;
 import Controle.ContGast;
 import Controle.ContOni;
 import Modelo.Onibus;
@@ -16,7 +15,6 @@ import com.googlecode.lanterna.gui.Window;
 import com.googlecode.lanterna.gui.component.Button;
 import com.googlecode.lanterna.gui.component.Label;
 import com.googlecode.lanterna.gui.component.Panel;
-import com.googlecode.lanterna.gui.component.Panel.Orientation;
 import com.googlecode.lanterna.gui.component.TextBox;
 import com.googlecode.lanterna.gui.dialog.MessageBox;
 import java.sql.SQLException;
@@ -31,13 +29,13 @@ public class TelaGasInserir extends Window {
 
     private static GUIScreen gui;
 
-    public TelaGasInserir(GUIScreen gui, String codigo) {
+    public TelaGasInserir(GUIScreen gui, String codigo, String nome) {
         super("Inserir");
         this.gui = gui;
-        init(codigo);
+        init(codigo, nome);
     }
 
-    public void init(String codigo) {
+    public void init(String codigo, String nome) {
         ContGast cogas = new ContGast();
 
         setBorder(new Border.Standard());
@@ -45,7 +43,7 @@ public class TelaGasInserir extends Window {
         painel01.setBetweenComponentsPadding(1);
 
         Label lblNome = new Label("Codigo do Onibus:");
-        TextBox txtNome = new TextBox(codigo);
+        TextBox txtNome = new TextBox(nome);
 
         Button botaoconsulta = new Button("Lista", new Action() {
             @Override
@@ -58,8 +56,9 @@ public class TelaGasInserir extends Window {
                             @Override
                             public void doAction() {
                                 String a = ""+oni.getCod();
+                                String b = oni.getModelo();
                                 close();
-                                gui.showWindow(new TelaGasInserir(gui, a));
+                                gui.showWindow(new TelaGasInserir(gui, a, b));
                             }
                             
                         });
@@ -70,7 +69,7 @@ public class TelaGasInserir extends Window {
                         @Override
                         public void doAction() {
                             close();
-                            gui.showWindow(new TelaGasInserir(gui, ""));
+                            gui.showWindow(new TelaGasInserir(gui, "", ""));
                         }
                         
                     });
@@ -101,7 +100,7 @@ public class TelaGasInserir extends Window {
             @Override
             public void doAction() {
                 try {
-                    if (cogas.insGast(Integer.parseInt(txtNome.getText()), txtbox.getText(), Double.parseDouble(txtSal.getText().replace(",", ".")))) {
+                    if (cogas.insGast(Integer.parseInt(codigo), txtbox.getText(), Double.parseDouble(txtSal.getText().replace(",", ".")))) {
                         MessageBox.showMessageBox(gui, "Info", "Gasto Inserido");
                     } else {
                         MessageBox.showMessageBox(gui, "Info", "ERRO!");

@@ -51,7 +51,7 @@ public class TelaGasto extends Window {
                 if(co.totalReg()<1){
                     MessageBox.showMessageBox(gui, "Info", "Nenhum ônibus cadastrado, função indisponivel");
                 }else{
-                gui.showWindow(new TelaGasInserir(gui, ""));
+                gui.showWindow(new TelaGasInserir(gui, "", ""));
                 }
             }
 
