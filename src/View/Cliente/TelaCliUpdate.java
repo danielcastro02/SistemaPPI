@@ -96,7 +96,6 @@ public class TelaCliUpdate extends Window {
 
                         try {
                             gui.showWindow(new TelaNovosDados(gui, a));
-                            MessageBox.showMessageBox(gui, "Info", "Cliente Atualizado");
                             close();
                             gui.showWindow(new TelaCliUpdate(gui, PrimReg));
                         } catch (ClassNotFoundException ex) {

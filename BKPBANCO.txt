@@ -1,7 +1,7 @@
 ﻿create table onibus(
 cod serial primary key,
 modelo varchar (30),
-gasto numeric (15,2)
+gasto numeric (15,2)default 0
 );
 
 
@@ -13,7 +13,7 @@ create table gasto(
 cod serial primary key,
 codo int,
 decr varchar (200),
-val numeric (15,2),
+val numeric (15,2) default 0,
 foreign key (codo) references onibus (cod));
 
 
@@ -25,7 +25,7 @@ create table cliente (
 cod serial primary key,
 nome varchar (30),
 cpf varchar (11),
-divd numeric (15,2));
+divd numeric (15,2)default 0);
 
 
 --==============================================================================================================
@@ -35,7 +35,7 @@ create table funcionario (
 cod serial primary key,
 nome varchar (30),
 cpf varchar (11),
-sal numeric (15,2));
+sal numeric (15,2)default 0);
 
 
 --==============================================================================================================
@@ -44,7 +44,7 @@ sal numeric (15,2));
 create table pagfun(
 cod serial primary key,
 codfun int,
-valor numeric (15,2),
+valor numeric (15,2)default 0,
 foreign key (codfun) references funcionario (cod));
 
 
@@ -124,7 +124,6 @@ create trigger divdoni
 before insert on gasto
 for each row
 execute procedure divdoni();
-
 
 --==============================================================================================================
 
@@ -213,3 +212,5 @@ insert into pagfun values (7, 7, 850);
 insert into pagfun values (8, 8, 800);
 insert into pagfun values (9, 9, 670);
 insert into pagfun values (10, 10, 1050);
+
+select * from cliente

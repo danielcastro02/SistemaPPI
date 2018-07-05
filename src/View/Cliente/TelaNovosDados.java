@@ -10,6 +10,7 @@ import com.googlecode.lanterna.gui.component.Button;
 import com.googlecode.lanterna.gui.component.Label;
 import com.googlecode.lanterna.gui.component.Panel;
 import com.googlecode.lanterna.gui.component.TextBox;
+import com.googlecode.lanterna.gui.dialog.MessageBox;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,11 +35,11 @@ public class TelaNovosDados extends Window {
         Label label1 = new Label("Nome");
         addComponent(label1);
         Cliente cli = cocli.selecCli(cod);
-        TextBox nome = new TextBox(cli.getNome());
+        TextBox nome = new TextBox(cli.getNome(),25);
         addComponent(nome);
         Label label2 = new Label("CPF");
         addComponent(label2);
-        TextBox cpf = new TextBox(cli.getCpf());
+        TextBox cpf = new TextBox(cli.getCpf(), 12);
         addComponent(cpf);
         
         Button enviar = new Button("Confirmar", new Action(){
@@ -46,6 +47,7 @@ public class TelaNovosDados extends Window {
             public void doAction() {
                 try {
                     cocli.updCli(cod, nome.getText(), cpf.getText(), cli.getDiv());
+                    MessageBox.showMessageBox(gui, "Info", "Cliente Atualizado");
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(TelaNovosDados.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (SQLException ex) {
@@ -61,6 +63,7 @@ public class TelaNovosDados extends Window {
             @Override
             public void doAction() {
                 close();
+                MessageBox.showMessageBox(gui, "Info", "Operação cancelada");
             }
             
         });
