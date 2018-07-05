@@ -193,14 +193,6 @@ insert into funcionario values (default, 'Maurício', '02977743387', 250);
 
 --==============================================================================================================
 
-insert into onibus values (default, 'VG-0998', 7000);
-insert into onibus values (default, 'ER-3768', 5600);
-insert into onibus values (default, 'FF-7768', 6400);
-insert into onibus values (default, 'GR-3854', 8100);
-insert into onibus values (default, 'HJ-0327', 6500);
-insert into onibus values (default, 'BV-2466', 5000);
-insert into onibus values (default, 'WP-9554', 4000);
-insert into onibus values (default, 'KN-0987', 5700);
 insert into onibus values (default, 'DS-0233', 6600);
 insert into onibus values (default, 'AT-4553', 5500);
 
