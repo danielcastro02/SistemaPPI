@@ -149,6 +149,23 @@ execute procedure deleta_divida();
 
 --==============================================================================================================
 
+create or replace function deldivdoni()
+returns trigger as $deldivdoni$
+begin
+update onibus set gasto = gasto - new.val where cod = new.codo;
+return new;
+end;
+$deldivdoni$ language plpgsql;
+
+create trigger deldivdoni
+after delete on gasto
+for each row
+execute procedure deldivdoni();
+
+
+
+--==============================================================================================================
+
 
 insert into cliente values (10, 'Trevor', '02456687608', 250);
 insert into cliente values (1, 'Yasmim', '02343354608', 250);
